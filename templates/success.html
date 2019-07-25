@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Success
+{% endblock %}
+
+{% block main %}
+
+<div>
+    <h1>Success - sort of:</h1>
+    <p>{{ libraryinfo.name }}</p>
+    <p>{{ libraryinfo.authority }}</p>
+    <p>{{ libraryinfo.address }}</p>
+    <p><a href="https://www.google.com/search?q={{ libraryinfo.name }}">Reviews on Google: {{ libraryinfo.ratings }}</a></p>
+    <!-- <p>{{ libraryinfo.place_id }}</p> -->
+</div>
+
+
+{% endblock %}

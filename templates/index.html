@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block main %}
+    <div class="container content">
+      <div class="column is-full">
+        <h1 class="title">
+          <i class="em em-bow"></i><i class="em em-books"></i> Library List
+        </h1>
+        <p class="subtitle">
+          Find your nearest and best-rated <strong>Library</strong>!
+        </p>
+
+        <form action="/" method="post">
+            <div class="form-group">
+              <input autocomplete="off" autofocus class="form-control" name="library" placeholder="Library" type="text">
+            </div>
+            <button class="btn btn-primary" type="submit">Search</button>
+          </form>
+
+        <div class="columns">
+          <div class="column">
+            <p class="subtitle">
+                A database of public libraries - with useful information like exact locations, regular events, opening times, proximity to stations and more <i class="em em-heavy_plus_sign"></i>.
+            </p>
+          </div>
+          <div class="column">
+            <h2>
+                Under construction <i class="em em-construction"></i>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-multiline">
+      <!-- Loop library card infos -->
+        {% for row in rows %}
+        <div class="column is-one-quarter">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4">{{ row.name }} Library</p>
+                  <p class="subtitle is-6">{{ row.authority }}</p>
+                </div>
+              </div>
+              <div class="content">
+                {{ row.address }}
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="column">
+        <h2>
+            Get some fancy image or thing which demonstrates the goodness. Like a tweet.
+        </h2>
+      </div>
+      <div class="columns">
+          <div class="column">
+            <p>
+                Todo:
+            </p>
+            <ol>
+              <li><strike>Create / connect database</strike></li>
+              <li>Set up 'Register' / Log in & out features</li>
+              <li>Make library page(s)</li>
+                  <ul>
+                      <li>- Decide whether to make a library template page which pulls info from database...?</li>
+                      <li>- Or make separate library routes, one for each library... surely not. If not work out how to do above</li>
+                  </ul>
+              <li>Work out how to give each library distinct URL, even if using template page (as above)</li>
+              <li>Find out how to gather information for all of the libraries</li>
+              <li>Decide on some page designs</li>
+              <li>Decide on some other features</li>
+              <li>Think about a calender feature which includes 'days' like 'Pirate Day', author's birth / death / best work's published days, etc.</li>
+              <li>Maybe have who writes like who else feature...</li>
+              <li>Ask a Librarian feature - just a contact form really</li>
+              <li>Integrate extra features like:</li>
+                  <ul>
+                      <li>- Maps</li>
+                      <li>- Reviews</li>
+                      <li>- Questions</li>
+                      <li>- Etc.</li>
+                  </ul>
+              <li>Etc...</li>
+          </ol>
+        </div>
+      </div>
+
+    </div> <!-- container -->
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="/register" id="reg" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" id="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="confirmation" placeholder="Password (again plz)" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+    <script>
+
+        $(document).ready(function() {
+            $("#reg").submit(function() {
+              var thisForm = this;
+              if  (!$("#reg input[name=username]").val())
+              {
+                  alert("Missing username!");
+                  return false;
+              }
+              else if (!$("#reg input[name=password]").val())
+              {
+                  alert("Missing password!");
+                  return false;
+              }
+              else if ($("#reg input[name=password]").val() != $("#reg input[name=confirmation]").val())
+              {
+                  alert("Passwords do not match!");
+                  return false;
+              }
+              // Query the db using 'get' to check if username is already taken.
+              let username = $("#reg input[name=username]").val();
+              $.get("/check?username=" + username, function(data) {
+                  if (data == false) {
+                      alert("Username already taken!");
+                      return false;
+                  }
+                  else if (data == true) {
+                    thisForm.submit();
+                    return true;
+                  }
+              });
+              event.preventDefault();
+              return true;
+            });
+        });
+
+    </script>
+{% endblock %}

@@ -21,7 +21,7 @@
 
         $(document).ready(function() {
             $("#reg").submit(function() {
-              var thisForm = this;
+              const thisForm = this;
               if  (!$("#reg input[name=username]").val())
               {
                   alert("Missing username!");

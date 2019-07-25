@@ -3,9 +3,9 @@
 
 #     if "library" in library:
 
-#         # Contact API
+#         # Contact API - won't work as removed API key because got bad email from G once uploaded to github :0
 #         try:
-#             response = requests.get(f"https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input={urllib.parse.quote_plus(library)}&inputtype=textquery&fields=formatted_address,name,user_ratings_total,place_id&key=AIzaSyDqrVoA-TBVdp8cCWJwSon2_ugOaPujgNs")
+#             response = requests.get(f"https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input={urllib.parse.quote_plus(library)}&inputtype=textquery&fields=formatted_address,name,user_ratings_total,place_id&key=")
 #             response.raise_for_status()
 
 #         except requests.RequestException:
